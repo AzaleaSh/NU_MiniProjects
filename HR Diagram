@@ -1,0 +1,22 @@
+!wget https://raw.githubusercontent.com/CIERA-Northwestern/REACHpy/main/Module_2/data/HRstars.csv
+
+import numpy as np
+import matplotlib.pyplot as plt
+HRstars = np.loadtxt('HRstars.csv.1', delimiter=',')
+
+x = HRstars[:, 0]
+y = HRstars[:, 1]
+t = np.log10(HRstars[:, 0])
+
+T_sun=5780. # K
+r_star= ((10000. * ((y * T_sun **4 /(x**4))**.5))**.5)
+
+plt.scatter(x,y, c=t, cmap='RdYlBu', s = r_star, alpha = .5)
+plt.title('HR Diagram')
+plt.xlabel('Temperature (K)')
+plt.ylabel('Luminosity (Lsun)')
+
+plt.xlim([5E4,15E2])
+
+plt.xscale('log')
+plt.yscale('log')
