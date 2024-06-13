@@ -1,0 +1,16 @@
+!wget https://raw.githubusercontent.com/CIERA-Northwestern/REACHpy/main/Module_2/data/exoplanets_subset.txt
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+exodata = np.loadtxt('exoplanets_subset.txt' , usecols=(0,2))
+
+radii = exodata[:,0]
+periods = exodata[:,1]
+
+plot = plt.scatter(periods, radii, c= 'pink')
+plt.xscale('log')
+plt.yscale('log')
+plt.title('Planetary Radii vs Orbital Period')
+plt.xlabel('Orbital Period')
+plt.ylabel('Planetary Radii')
