@@ -1,0 +1,20 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+G = 6.67408e-11
+M_sun = 1.989e30
+
+orbitalradii = np.array([5.79E10, 1.082E11, 1.496E11, 2.280E11, 7.785E11, 1.432E12, 2.867E12, 4.515E12])
+
+def velocity(radius):
+  v = ((G* M_sun)/radius)**0.5
+  return v
+  
+velocities = velocity(orbitalradii)
+v_accepted = np.array([4.74E4, 3.5E4, 2.98E4, 2.41E4, 1.31E4, 9.7E3, 6.8E3, 5.4E3])
+
+plt.scatter(velocities, orbitalradii, label='Calculated', color='b', alpha=.25)
+plt.scatter(v_accepted, orbitalradii, label='Expected', color='r', alpha = .25)
+plt.legend()
+plt.xlabel('Velocity')
+plt.ylabel('Radius')
