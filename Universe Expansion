@@ -1,0 +1,21 @@
+!wget https://raw.githubusercontent.com/CIERA-Northwestern/REACHpy/main/Module_2/data/type1a_sne.csv
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+galaxydata = np.loadtxt('type1a_sne.csv', delimiter= ',')
+x = galaxydata[:,0]
+m = 60
+y = galaxydata[:,1]
+
+def line(m_lbf, x_lbf):
+  y_lbf = m_lbf*x_lbf
+  return y_lbf
+
+y_line = line(m, x)
+
+plt.scatter(x, y)
+plt.plot(x, y_line)
+plt.xlabel('Distance (Mpc)')
+plt.ylabel('Velocity (km/s)')
+plt.title('Distance vs Velocity')
